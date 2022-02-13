@@ -1,11 +1,11 @@
 namespace Lesson4;
 
-public class Employee:IPrintToConsole
+public class Employee: AbstractUser, IPrintable
 {
-    public Employee(Guid userId, string fullName, string jobTittle, string jobDescription, decimal jobSalary, string companyName, string companyCountry, string companyCity, string companyStreet)
+    public Employee(Guid userId, string firstName, string lastName, string jobTittle, string jobDescription, 
+        decimal jobSalary, string companyName, string companyCountry, string companyCity, string companyStreet) 
+        : base(userId,firstName,lastName)
     {
-        UserId = userId;
-        FullName = fullName;
         JobTittle = jobTittle;
         JobDescription = jobDescription;
         JobSalary = jobSalary;
@@ -15,8 +15,6 @@ public class Employee:IPrintToConsole
         CompanyStreet = companyStreet;
     }
 
-    public Guid UserId { get; set; }
-    public string FullName { get; set; }
     public string JobTittle { get; set; }
     public string JobDescription { get; set; }
     public decimal JobSalary { get; set; }
@@ -25,9 +23,9 @@ public class Employee:IPrintToConsole
     public string CompanyCity { get; set; }
     public string CompanyStreet { get; set; }
     
-    public void PrintToConsole()
+    public void Print()
     {
-        Console.WriteLine($"Hello, I am {FullName}, {JobTittle} in {CompanyName} " +
+        Console.WriteLine($"Hello, I am {FirstName} {LastName}, {JobTittle} in {CompanyName} " +
                           $"({CompanyCountry}, {CompanyCity}, {CompanyStreet}) and my salary {JobSalary}");
     }
 }
