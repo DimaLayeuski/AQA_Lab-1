@@ -1,16 +1,10 @@
 namespace Lesson4;
 
-public class Candidate : AbstractUser, IPrintable
+public class Candidate : IPrintable
 {
-    public Candidate(decimal jobSalary, string? jobDescription, string? jobTittle, Guid userId,
-        string? lastName, string? firstName) : base(userId,firstName,lastName)
-    {
-        
-        JobSalary = jobSalary;
-        JobDescription = jobDescription;
-        JobTittle = jobTittle;
-    }
-
+    public Guid UserId { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
     public string? JobTittle { get; set; }
     public string? JobDescription { get; set; }
     public decimal JobSalary { get; set; }

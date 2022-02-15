@@ -3,7 +3,7 @@ using Bogus;
 
 namespace Lesson4;
 
-public class UserFactory
+public static class UserFactory
 {
     private const int MinSalary = 1000;
     private const int MaxSalary = 5000;
@@ -21,7 +21,7 @@ public class UserFactory
     }
 
 
-    internal static Candidate GenerateCandidate()
+    private static Candidate GenerateCandidate()
     {
         return new Faker<Candidate>()
             .RuleFor(x => x.UserId, _ => Guid.NewGuid())
@@ -33,7 +33,7 @@ public class UserFactory
             .Generate();
     }
 
-    internal static Employee GenerateEmployee()
+    private static Employee GenerateEmployee()
     {
         return new Faker<Employee>()
             .RuleFor(x => x.UserId, _ => Guid.NewGuid())
@@ -47,6 +47,5 @@ public class UserFactory
             .RuleFor(x => x.CompanyCity, x => x.Address.City())
             .RuleFor(x => x.CompanyStreet, x => x.Address.StreetName())
             .Generate();
-        
-    }
+        }
 }
