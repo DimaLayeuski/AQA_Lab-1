@@ -5,13 +5,11 @@ namespace Lesson3;
 public class DriverGenerator
 {
     private const short DriverCount = 3;
-    private readonly Faker _faker;
     private readonly List<Driver> _drivers;
 
     public DriverGenerator()
     {
         _drivers = new List<Driver>();
-        _faker = new Faker();
     }
 
     public List<Driver> GenerateDrivers()
@@ -24,9 +22,10 @@ public class DriverGenerator
                 .RuleFor(x => x.DateOfBirth, x => x.Person.DateOfBirth.Date)
                 .RuleFor(x => x.IdNumber, _ => Guid.NewGuid())
                 .RuleFor(x => x.IsDriver, x => x.Random.Bool())
-                .RuleFor(x => x.IsDriver, x => x.Random.Bool())
+                .RuleFor(x => x.DateDriverLicense,
+                    x => x.Date.Between(x.Person.DateOfBirth.Date.AddYears(16), DateTime.Now))
                 .Generate();
-            driver.DateDriverLicense = _faker.Date.Between(driver.DateOfBirth.AddYears(16), DateTime.Now);
+            
             _drivers.Add(driver);
         }
 
