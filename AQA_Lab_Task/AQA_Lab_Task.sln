@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConvertor", "CurrencyConvertor\CurrencyConvertor.csproj", "{FD90C86A-60F8-4A45-8D2E-2173E37BE12E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorAppointment", "DoctorAppointment\DoctorAppointment.csproj", "{2BE01531-2EAA-4089-BA04-FAA2A8B7440E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD90C86A-60F8-4A45-8D2E-2173E37BE12E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD90C86A-60F8-4A45-8D2E-2173E37BE12E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD90C86A-60F8-4A45-8D2E-2173E37BE12E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD90C86A-60F8-4A45-8D2E-2173E37BE12E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE01531-2EAA-4089-BA04-FAA2A8B7440E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE01531-2EAA-4089-BA04-FAA2A8B7440E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE01531-2EAA-4089-BA04-FAA2A8B7440E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE01531-2EAA-4089-BA04-FAA2A8B7440E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
