@@ -11,11 +11,11 @@ public static class DoctorAppointment
     {
         Console.WriteLine("Hello! Enter your Last Name.");
         var lastName = Console.ReadLine();
-        var refactorLastName = StringFormatting.Formatting(lastName);
+        var refactorLastName = StringUtils.StringConversion(lastName);
 
         Console.WriteLine("Enter your Name.");
         var name = Console.ReadLine();
-        var refactorName = StringFormatting.Formatting(name);
+        var refactorName = StringUtils.StringConversion(name);
 
         Console.WriteLine("Enter the appointment date in the format dd/mm/yyyy");
         var dateNow = DateTime.Now;
