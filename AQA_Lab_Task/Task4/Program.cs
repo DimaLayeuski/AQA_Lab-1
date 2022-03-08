@@ -1,4 +1,4 @@
-﻿using Lesson4;
+﻿using Task4;
 
 var generator = new RandomUserGenerator();
 var users = generator.GenerateRandomUsers();

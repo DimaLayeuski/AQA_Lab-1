@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using Bogus;
 
-namespace Lesson4;
+namespace Task4;
 
 public static class UserFactory
 {

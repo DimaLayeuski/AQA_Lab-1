@@ -9,11 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Dockerfile" />
-      <None Remove=".dockerignore" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Bogus" Version="34.0.1" />
     </ItemGroup>
 
