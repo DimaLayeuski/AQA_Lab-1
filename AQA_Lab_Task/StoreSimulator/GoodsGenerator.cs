@@ -15,5 +15,8 @@ public class GoodsGenerator
             .RuleFor(product => product!.Price, faker => double.Parse(faker.Commerce.Price()));
     }
 
+    public static IEnumerable<Goods?>? GenerateProductsList(int count = 1)
+    {
+        return GoodsFaker?.Generate(count);
+    }
  }
-
