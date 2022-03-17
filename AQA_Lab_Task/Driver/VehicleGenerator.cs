@@ -7,7 +7,6 @@ public class VehicleGenerator
     private readonly Faker _faker;
     private readonly List<Vehicle> _vehicles;
     private readonly List<Driver>? _drivers;
-    private const int VehicleCount = 3;
 
     public VehicleGenerator(List<Driver> drivers)
     {
@@ -16,9 +15,9 @@ public class VehicleGenerator
         _vehicles = new List<Vehicle>();
     }
 
-    public IEnumerable<Vehicle> GenerateVehicles()
+    public IEnumerable<Vehicle> GenerateVehicles(int vehicleCount)
     {
-        for (var i = 0; i < VehicleCount; i++)
+        for (var i = 0; i < vehicleCount; i++)
         {
             _vehicles.Add(GenerateMinivan());
             _vehicles.Add(GenerateTruck());

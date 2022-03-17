@@ -4,7 +4,6 @@ namespace Driver;
 
 public class DriverGenerator
 {
-    private const short DriverCount = 3;
     private readonly List<Driver> _drivers;
 
     public DriverGenerator()
@@ -12,9 +11,9 @@ public class DriverGenerator
         _drivers = new List<Driver>();
     }
 
-    public List<Driver> GenerateDrivers()
+    public List<Driver> GenerateDrivers(short driverCount)
     {
-        for (var i = 0; i < DriverCount; i++)
+        for (var i = 0; i < driverCount; i++)
         {
             var driver = new Faker<Driver>()
                 .RuleFor(x => x.FirstName, x => x.Person.FirstName)
@@ -25,7 +24,6 @@ public class DriverGenerator
                 .RuleFor(x => x.DateDriverLicense,
                     x => x.Date.Between(x.Person.DateOfBirth.Date.AddYears(16), DateTime.Now))
                 .Generate();
-
             _drivers.Add(driver);
         }
 

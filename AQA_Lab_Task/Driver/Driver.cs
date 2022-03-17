@@ -2,9 +2,27 @@ namespace Driver;
 
 public class Driver : Person
 {
-    public DateTime DateDriverLicense { get; set; } = default!;
-    public Guid IdNumber { get; set; } = default!;
-    public Vehicle Vehicle { get; set; } = null!;
+    private DateTime _dateDriverLicense;
+    private Guid _idNumber;
+    private Vehicle? _vehicle;
+
+    public DateTime DateDriverLicense
+    {
+        get => _dateDriverLicense;
+        set => _dateDriverLicense = value;
+    }
+
+    public Guid IdNumber
+    {
+        get => _idNumber;
+        set => _idNumber = value;
+    }
+
+    public Vehicle? Vehicle
+    {
+        get => _vehicle;
+        set => _vehicle = value;
+    }
 
     public void Print()
     {
