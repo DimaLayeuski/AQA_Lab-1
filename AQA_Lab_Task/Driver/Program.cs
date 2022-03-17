@@ -11,12 +11,21 @@ foreach (var driver in drivers)
     driver.Print();
 }
 
-string? infoChoice;
+string? command;
 string? choice;
+string? infoChoice;
+
 do
 {
+    string commandTitle = "\nIf you want continue enter - 1 \nIf you want exit enter - 2 \n";
+    command = StringUtils.StringConversion(commandTitle, 0, 3);
+    if (command == "2")
+    {
+        break;
+    }
+
     string mainTitle = "\nChoose driver (1-3): ";
-    choice = StringUtils.StringConversion(mainTitle, 0, 4);
+    choice = StringUtils.StringConversion(mainTitle, 0, 5);
 
     var chosenDriver = drivers[int.Parse(choice!) - 1];
     var ownedVehicles = vehicles.Where(v => v.Owner != null && v.Owner.Equals(chosenDriver));
@@ -58,4 +67,4 @@ do
             break;
         }
     }
-} while (!string.IsNullOrEmpty(infoChoice) && !string.IsNullOrEmpty(choice));
+} while (command != "2");
