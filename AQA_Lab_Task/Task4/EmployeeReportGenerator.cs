@@ -4,8 +4,8 @@ public class EmployeeReportGenerator : IReportGenerator
 {
     public void GenerateReport(IEnumerable<IPrintable> users)
     {
-        var sorted = users.OfType<Employee>().OrderBy(x => x.CompanyName)
-            .ThenByDescending(x => x.JobSalary);
+        var sorted = users.OfType<Employee>().OrderBy(x => x.JobSalary)
+            .ThenByDescending(x=>x.CompanyName);
         foreach (var employee in sorted)
         {
             Console.WriteLine($"{employee.UserId} || {employee.CompanyName} || " +
