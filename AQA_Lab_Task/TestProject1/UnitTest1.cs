@@ -16,19 +16,19 @@ namespace TestProject1
 
         [Test]
         [Category("SmokeTest")]
-        [Property("Severity", 1)]
         public void TestSum()
         {
-            Assert.AreEqual(5, _calculator.Sum(1, 4));
+            Assert.AreEqual(7, _calculator.Sum(3, 4));
         }
 
         [Test]
-        [Property("Priority", 2)]
         public void TestDiv()
         {
-            Assert.AreEqual(4, _calculator.Div(8, 2));
-            Assert.Throws<DivideByZeroException>(
-                delegate { _calculator.Div(8, 0); });
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(5, _calculator.Div(10, 2));
+                Assert.Throws<DivideByZeroException>(delegate { _calculator.Div(10, 0); });
+            });
         }
 
         [Test]
@@ -43,12 +43,10 @@ namespace TestProject1
                 TestContext.Out.WriteLineAsync($"Second Double is {b}");
                 Assert.AreEqual(a / b, _calculator.Div(a, b));
                 Assert.AreEqual(3.7737556561085972d, _calculator.Div(8.34, 2.21));
-                Assert.True(Double.IsPositiveInfinity(_calculator.Div(8d, 0d)));
-                Assert.IsTrue(Double.IsNegativeInfinity(_calculator.Div(-8d, 0d)));
+                Assert.True(Double.IsPositiveInfinity(_calculator.Div(7d, 0d)));
+                Assert.IsTrue(Double.IsNegativeInfinity(_calculator.Div(-7d, 0d)));
                 Assert.IsTrue(Double.IsNaN(_calculator.Div(0d, 0d)));
-                
             });
         }
-       
     }
 }
