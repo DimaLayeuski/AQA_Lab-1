@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using static System.Console;
+
 namespace StoreSimulator;
 
 public class Validator

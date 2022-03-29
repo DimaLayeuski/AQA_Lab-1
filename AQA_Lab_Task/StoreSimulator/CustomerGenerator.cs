@@ -5,13 +5,10 @@ namespace StoreSimulator;
 public class CustomerGenerator
 {
     private const int MinAge = 18;
-    
     private const int MaxAge = 65;
-    
     private const int PassportIdFormat = 7;
-    
     private static readonly Faker<Customer> UserFaker;
-    
+
     static CustomerGenerator()
     {
         UserFaker = new Faker<Customer>()

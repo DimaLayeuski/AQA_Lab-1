@@ -4,7 +4,7 @@ namespace StoreSimulator;
 
 public class GoodsGenerator
 {
-    private static readonly Faker<Goods?>? GoodsFaker;
+    private static Faker<Goods?>? GoodsFaker;
 
     static GoodsGenerator()
     {
