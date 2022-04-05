@@ -1,12 +1,8 @@
 ﻿using StoreSimulator;
 
 var users = CustomerGenerator.GenerateCustomerList(5);
-users.ToList().ForEach(user =>
-{
-    var products = GoodsGenerator.GenerateProductsList(5);
-    user.CustomerCart.AddProductsList(products);
-});
-var shop = new Store(users);
+var userCart = CustomerGenerator.GenerateCustomerCart(users, 5);
+var shop = new Store(userCart);
 
 string? choice;
 do

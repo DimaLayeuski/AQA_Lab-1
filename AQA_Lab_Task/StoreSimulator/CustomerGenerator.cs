@@ -8,6 +8,7 @@ public class CustomerGenerator
     private const int MaxAge = 65;
     private const int PassportIdFormat = 7;
     private static readonly Faker<Customer> UserFaker;
+    private const int Count = 1;
 
     static CustomerGenerator()
     {
@@ -18,9 +19,19 @@ public class CustomerGenerator
             .RuleFor(user => user.LastName, faker => faker.Person.LastName);
     }
 
-    public static List<Customer> GenerateCustomerList(int count = 1)
+    public static List<Customer> GenerateCustomerList(int count = Count)
     {
         var customers = UserFaker.Generate(count);
         return customers;
+    }
+
+    public static List<Customer> GenerateCustomerCart(List<Customer> users, int countProducts)
+    {
+        users.ToList().ForEach(user =>
+        {
+            var products = GoodsGenerator.GenerateProductsList(countProducts);
+            user.CustomerCart.AddProductsList(products);
+        });
+        return users;
     }
 }
