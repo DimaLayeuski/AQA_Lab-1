@@ -2,24 +2,24 @@ namespace StoreSimulator;
 
 public class Goods
 {
-    private string? _goodsName;
-    private string? _category;
-    private string? _barcodeId;
+    private string _goodsName;
+    private string _category;
+    private string _barcodeId;
     private double _price;
 
-    public string? GoodsName
+    public string GoodsName
     {
         get => _goodsName;
         set => _goodsName = value;
     }
 
-    public string? Category
+    public string Category
     {
         get => _category;
         set => _category = value;
     }
 
-    public string? BarcodeId
+    public string BarcodeId
     {
         get => _barcodeId;
         set => _barcodeId = value;

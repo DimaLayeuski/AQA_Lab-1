@@ -4,7 +4,7 @@ var users = CustomerGenerator.GenerateCustomerList(5);
 var userCart = CustomerGenerator.GenerateCustomerCart(users, 5);
 var shop = new Store(userCart);
 
-string? choice;
+string choice;
 do
 {
     Console.Clear();

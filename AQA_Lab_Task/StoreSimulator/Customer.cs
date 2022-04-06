@@ -14,13 +14,13 @@ public class Customer
         set => _passportId = value;
     }
 
-    public string? FirstName
+    public string FirstName
     {
         get => _firstName;
         set => _firstName = value;
     }
 
-    public string? LastName
+    public string LastName
     {
         get => _lastName;
         set => _lastName = value;
