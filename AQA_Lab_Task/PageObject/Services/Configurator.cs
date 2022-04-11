@@ -9,11 +9,13 @@ public class Configurator
 {
     private static readonly Lazy<IConfiguration> s_configuration;
     public static IConfiguration Configuration => s_configuration.Value;
-
     public static string BaseUrl => Configuration[nameof(BaseUrl)];
     public static string Username => Configuration[nameof(Username)];
     public static string Password => Configuration[nameof(Password)];
     public static string BrowserType => Configuration[nameof(BrowserType)];
+    public static string FirstName => Configuration[nameof(FirstName)];
+    public static string LastName => Configuration[nameof(LastName)];
+    public static string PostalCode => Configuration[nameof(PostalCode)];
 
     static Configurator()
     {
@@ -26,7 +28,6 @@ public class Configurator
         var builder = new ConfigurationBuilder()
             .SetBasePath(basePath)
             .AddJsonFile("appsettings.json");
-
         var appSettingFiles = Directory.EnumerateFiles(basePath, "appsettings.*.json");
 
         foreach (var appSettingFile in appSettingFiles)

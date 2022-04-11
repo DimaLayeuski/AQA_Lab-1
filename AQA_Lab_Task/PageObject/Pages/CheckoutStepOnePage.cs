@@ -7,14 +7,12 @@ namespace PageObject.Pages;
 public class CheckoutStepOnePage : BasePage
 {
     private const string END_POINT = "/checkout-step-one.html";
-
-    //описание локатора
     private static readonly By ContinueBy = By.Id("continue");
     private static readonly By FirstNameBy = By.Id("first-name");
     private static readonly By LastNameBy = By.Id("last-name");
     private static readonly By PostalCodeBy = By.Id("postal-code");
-    
-    //конструктор
+    private static readonly By TitleBy = By.XPath("//*[contains (text(),'Checkout')]");
+
     public CheckoutStepOnePage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
     }
@@ -35,10 +33,10 @@ public class CheckoutStepOnePage : BasePage
             return false;
         }
     }
-    
-    //Атомарные элементы
+
     public IWebElement Continue => Driver.FindElement(ContinueBy);
     public IWebElement FirstName => Driver.FindElement(FirstNameBy);
     public IWebElement LastName => Driver.FindElement(LastNameBy);
     public IWebElement PostalCode => Driver.FindElement(PostalCodeBy);
+    public IWebElement Title => Driver.FindElement(TitleBy);
 }

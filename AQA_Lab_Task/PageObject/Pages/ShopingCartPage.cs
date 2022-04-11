@@ -7,12 +7,9 @@ namespace PageObject.Pages;
 public class ShopingCartPage : BasePage
 {
     private const string END_POINT = "/cart.html";
-
-    //описание локатора
     private static readonly By CheckoutBy = By.Id("checkout");
     private static readonly By ItemNameBy = By.ClassName("inventory_item_name");
 
-    //конструктор
     public ShopingCartPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
     }
@@ -34,7 +31,6 @@ public class ShopingCartPage : BasePage
         }
     }
 
-    //Атомарные элементы
     public IWebElement Checkout => Driver.FindElement(CheckoutBy);
     public IWebElement ItemName => Driver.FindElement(ItemNameBy);
 }

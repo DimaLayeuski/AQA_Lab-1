@@ -7,11 +7,9 @@ namespace PageObject.Pages;
 public class CheckoutStepTwoPage : BasePage
 {
     private const string END_POINT = "/checkout-step-two.html";
-
-    //описание локатора
     private static readonly By FinishBy = By.Id("finish");
-    
-    //конструктор
+    private static readonly By TitleBy = By.XPath("//*[contains (text(),'Checkout')]");
+
     public CheckoutStepTwoPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
     }
@@ -32,7 +30,7 @@ public class CheckoutStepTwoPage : BasePage
             return false;
         }
     }
-    
-    //Атомарные элементы
+
     public IWebElement Finish => Driver.FindElement(FinishBy);
+    public IWebElement Title => Driver.FindElement(TitleBy);
 }

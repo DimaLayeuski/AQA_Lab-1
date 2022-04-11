@@ -7,11 +7,8 @@ namespace PageObject.Pages;
 public class CheckoutCompletePage : BasePage
 {
     private const string END_POINT = "/checkout-complete.html";
-
-    //описание локатора
     private static readonly By BackToProductsBy = By.Id("back-to-products");
-    
-    //конструктор
+
     public CheckoutCompletePage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
     }
@@ -32,7 +29,6 @@ public class CheckoutCompletePage : BasePage
             return false;
         }
     }
-    
-    //Атомарные элементы
+
     public IWebElement BackToProducts => Driver.FindElement(BackToProductsBy);
 }
