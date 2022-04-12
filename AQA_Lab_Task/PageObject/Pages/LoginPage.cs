@@ -32,7 +32,7 @@ public class LoginPage : BasePage
         }
     }
 
-    public IWebElement UsernameInput => Driver.FindElement(UsernameInputBy);
-    public IWebElement PasswordInput => Driver.FindElement(PasswordInputBy);
-    public IWebElement LoginButton => Driver.FindElement(LoginButtonBy);
+    public IWebElement UsernameInput => WaitService.WaitElementIsExist(UsernameInputBy);
+    public IWebElement PasswordInput => WaitService.WaitElementIsExist(PasswordInputBy);
+    public IWebElement LoginButton => WaitService.WaitElementIsExist(LoginButtonBy);
 }

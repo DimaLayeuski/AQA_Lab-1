@@ -38,5 +38,5 @@ public class ProductsPage : BasePage
     public IWebElement AddToCart => Driver.FindElement(AddToCartBy);
     public IWebElement ShopingCart => Driver.FindElement(ShopingCartBy);
     public IWebElement ReactMenu => Driver.FindElement(ReactMenuBy);
-    public IWebElement LogOut => Driver.FindElement(LogOutBy);
+    public IWebElement LogOut => WaitService.WaitElementIsVisible(LogOutBy);
 }

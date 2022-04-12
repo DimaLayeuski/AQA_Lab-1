@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using PageObject.Services;
 
 namespace PageObject.Pages;
 
@@ -9,6 +10,7 @@ public abstract class BasePage
 {
     [ThreadStatic] private static IWebDriver _driver;
     private const int WAIT_FOR_PAGE_LOADING_TIME = 60;
+    private static WaitService _waitService;
 
     protected abstract void OpenPage();
 
@@ -17,6 +19,7 @@ public abstract class BasePage
     protected BasePage(IWebDriver driver, bool openPageByUrl)
     {
         Driver = driver;
+        _waitService = new WaitService(Driver);
 
         if (openPageByUrl)
         {
@@ -28,13 +31,12 @@ public abstract class BasePage
 
     private void WaitForOpen()
     {
-        var secondsCount = 0;
+        var Count = 0;
         var isPageOpenedIndicator = IsPageOpened();
 
-        while (!isPageOpenedIndicator && secondsCount < WAIT_FOR_PAGE_LOADING_TIME)
+        while (!isPageOpenedIndicator && Count < WAIT_FOR_PAGE_LOADING_TIME/Configurator.WaitTimeout)
         {
-            Thread.Sleep(1000);
-            secondsCount++;
+            Count++;
             isPageOpenedIndicator = IsPageOpened();
         }
 
@@ -48,5 +50,10 @@ public abstract class BasePage
     {
         get => _driver;
         set => _driver = value ?? throw new ArgumentException(nameof(value));
+    }
+
+    public static WaitService WaitService
+    {
+        get => _waitService;
     }
 }

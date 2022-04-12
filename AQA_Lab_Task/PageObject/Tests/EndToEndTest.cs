@@ -1,4 +1,3 @@
-using System.Threading;
 using NUnit.Framework;
 using PageObject.Pages;
 using PageObject.Services;
@@ -48,7 +47,6 @@ public class EndToEndTest : BaseTest
 
         //Test_LogOut
         productsPage.ReactMenu.Click();
-        Thread.Sleep(100);
         productsPage.LogOut.Click();
         Assert.IsTrue(loginPage.LoginButton.Displayed);
     }
