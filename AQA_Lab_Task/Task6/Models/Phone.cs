@@ -1,6 +1,4 @@
-﻿using Task6.Enums;
-
-namespace Task6.Models;
+﻿namespace Task6.Models;
 
 [Serializable]
 public class Phone
