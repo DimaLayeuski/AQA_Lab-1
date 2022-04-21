@@ -6,7 +6,7 @@ namespace Task6.Models;
 public class Phone
 {
     private string _model;
-    private OperatingSystemType _operatingSystemType;
+    private string _operationSystemType;
     private string _marketLaunchDate;
     private string _price;
     private bool _isAvailable;
@@ -18,10 +18,10 @@ public class Phone
         set => _model = value;
     }
 
-    public OperatingSystemType OperatingSystemType
+    public string OperationSystemType
     {
-        get => _operatingSystemType;
-        set => _operatingSystemType = value;
+        get => _operationSystemType;
+        set => _operationSystemType = value;
     }
 
     public string MarketLaunchDate

@@ -5,7 +5,7 @@ namespace Task6.Services;
 
 public class JsonWriterService : JsonServiceBase
 {
-    public static void SerializeToFile<T>(string? filename, T objectToWrite)
+    public static void SerializeToFile<T>(string filename, T objectToWrite)
     {
         var fullPath = $"{BasePath}{Path.DirectorySeparatorChar}Data{Path.DirectorySeparatorChar}{filename}";
         string jsonString;

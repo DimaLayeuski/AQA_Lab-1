@@ -1,4 +1,5 @@
 ﻿using SimpleLogger;
+using SimpleLogger.Logging.Handlers;
 using Task6.Exceptions;
 using Task6.Models;
 
@@ -13,9 +14,9 @@ public class MenuHandler
         _shops = shops;
     }
 
-    public Phone? ProcessUserInput()
+    public Phone ProcessUserInput()
     {
-        string? phoneModel;
+        string phoneModel;
         do
         {
             try
@@ -34,7 +35,7 @@ public class MenuHandler
         } while (true);
     }
 
-    private bool TryFindPhones(string? phoneModel, out Phone? foundPhone)
+    private bool TryFindPhones(string phoneModel, out Phone foundPhone)
     {
         var availableShops = FindAvailableShops(phoneModel);
 
@@ -62,20 +63,20 @@ public class MenuHandler
         return false;
     }
 
-    private static Phone? FindPhoneByModelName(string? phoneModel, Shop shop)
+    private static Phone FindPhoneByModelName(string phoneModel, Shop shop)
     {
         return shop.Phones!.First(smartphone => smartphone!.Model.Equals(phoneModel));
     }
 
-    private List<Shop> FindAvailableShops(string? phoneModel)
+    private List<Shop> FindAvailableShops(string phoneModel)
     {
         return _shops!.FindAll(shop => shop.Phones!.Exists(item => item!.Model.Equals(phoneModel)));
     }
 
-    public void ProcessCheckout(Phone? phone, string? filename)
+    public void ProcessCheckout(Phone phone, string filename)
     {
-        Shop? chosenShop;
-        string? shopName = null;
+        Shop chosenShop;
+        string shopName = null;
         do
         {
             Logger.Log("Enter shop you want to buy from: ");
@@ -93,7 +94,7 @@ public class MenuHandler
         } while (true);
     }
 
-    private Shop GetShopFromKeyboard(string? shopName)
+    private Shop GetShopFromKeyboard(string shopName)
     {
         Shop? chosenShop;
         shopName = Console.ReadLine();
@@ -104,5 +105,18 @@ public class MenuHandler
         }
 
         return chosenShop;
+    }
+
+    public static void AddHandler()
+    {
+        Logger.LoggerHandlerManager.AddHandler(new ConsoleLoggerHandler());
+        Logger.DefaultLevel = Configurator.LogLevel switch
+        {
+            "Fine" => Logger.Level.Fine,
+            "Debug" => Logger.Level.Debug,
+            "Info" => Logger.Level.Info,
+            "Error" => Logger.Level.Error,
+            _ => Logger.Level.None
+        };
     }
 }
