@@ -10,12 +10,10 @@ public class Configurator
     private static readonly Lazy<IConfiguration> s_configuration;
     public static IConfiguration Configuration => s_configuration.Value;
     public static string BaseUrl => Configuration[nameof(BaseUrl)];
-    public static string Username => Configuration[nameof(Username)];
-    public static string Password => Configuration[nameof(Password)];
+    public static string VkComUrl => Configuration[nameof(VkComUrl)];
+    public static string FacebookUrl => Configuration[nameof(FacebookUrl)];
+    public static string TwitterUrl => Configuration[nameof(TwitterUrl)];
     public static string BrowserType => Configuration[nameof(BrowserType)];
-    public static string FirstName => Configuration[nameof(FirstName)];
-    public static string LastName => Configuration[nameof(LastName)];
-    public static string PostalCode => Configuration[nameof(PostalCode)];
     public static int WaitTimeout => int.Parse(Configuration[nameof(WaitTimeout)]);
 
     static Configurator()
