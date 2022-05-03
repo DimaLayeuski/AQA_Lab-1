@@ -4,12 +4,14 @@ using Task16.Services;
 
 namespace Task16.Pages;
 
-public class VkComPage : BasePage
+public class VkPage : BasePage
 {
     private const string END_POINT = "/onliner";
-    private static readonly By PageNameBy = By.ClassName("page_name");
 
-    public VkComPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
+    private static readonly By PageNameBy = By.ClassName("page_name");
+    private static readonly By LoginButtonBy = By.CssSelector("[class='quick_login_button flat_button button_wide']");
+
+    public VkPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
     }
 
@@ -31,4 +33,5 @@ public class VkComPage : BasePage
     }
 
     public IWebElement PageName => WaitService.WaitElementIsExist(PageNameBy);
+    public static IWebElement LoginButton => Driver.FindElement(LoginButtonBy);
 }
