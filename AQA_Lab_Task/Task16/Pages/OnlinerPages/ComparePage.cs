@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using Task16.Services;
 
@@ -7,11 +8,21 @@ namespace Task16.Pages;
 public class ComparePage : BasePage
 {
     private const string END_POINT = "/compare";
+
     private static readonly By TitleBy = By.ClassName("b-offers-title");
-    private static readonly By ScreenSizeBy = By.XPath("(//*/ancestor :: div//*[@class = 'product-table__wrapper'])[12]");
-    private static readonly By ScreenSizeInfoBy = By.XPath("((//div[@class='product-table-tip'])[3]//span)[1]");
-    private static readonly By RemoveButtonBy = By.XPath("(//*[@class='product-summary']/ following-sibling :: a) [2]");
-    private static readonly string finishUrlBy = "/compare/qe65q80aauxru";
+
+    private static readonly By ScreenSizeBy =
+        By.XPath("(//td[@class='product-table__cell']//span[contains (text(), 'Диагональ экрана')])");
+
+    private static readonly By ScreenSizeInfoBy =
+        By.XPath("(//div[@class='product-table-tip'])//span[@data-tip-term='Диагональ экрана']");
+
+    private static readonly By ScreenSizeInfoTextBy = By.XPath("(//div[@class='product-table-tip__text'])");
+
+    private static readonly By RemoveButtonBy =
+        By.XPath("(//*[@class='product-summary']/ following-sibling :: a) [2]");
+
+    private static readonly By ProductSummaryBy = By.CssSelector(".product-summary");
 
     public ComparePage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
@@ -19,7 +30,7 @@ public class ComparePage : BasePage
 
     protected override void OpenPage()
     {
-        Driver.Navigate().GoToUrl(Configurator.BaseUrl + END_POINT);
+        Driver.Navigate().GoToUrl(Configurator.OnlinerUrl + END_POINT);
     }
 
     protected override bool IsPageOpened()
@@ -34,9 +45,10 @@ public class ComparePage : BasePage
         }
     }
 
-    public IWebElement Title => Driver.FindElement(TitleBy);
-    public IWebElement ScreenSize => Driver.FindElement(ScreenSizeBy);
+    public IWebElement Title => WaitService.WaitElementIsExist(TitleBy);
+    public IWebElement ScreenSize => WaitService.WaitElementIsExist(ScreenSizeBy);
     public IWebElement ScreenSizeInfo => WaitService.WaitElementIsVisible(ScreenSizeInfoBy);
-    public IWebElement RemoveButton => Driver.FindElement(RemoveButtonBy);
-    public bool FinishUrl => WaitService.WaitUrlMatches(finishUrlBy);
+    public bool ScreenSizeInfoTextInvisible => WaitService.WaitUntilElementInvisible(ScreenSizeInfoTextBy);
+    public IWebElement RemoveButton => WaitService.WaitElementToBeClickable(RemoveButtonBy);
+    public ReadOnlyCollection<IWebElement> ProductSummary => WaitService.WaitUntilElementsPresent(ProductSummaryBy);
 }
