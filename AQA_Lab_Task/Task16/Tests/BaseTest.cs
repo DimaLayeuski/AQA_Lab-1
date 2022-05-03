@@ -6,17 +6,17 @@ namespace PageObject;
 
 public class BaseTest
 {
-    protected IWebDriver Driver;
+    protected IWebDriver _driver;
 
     [SetUp]
     public void Setup()
     {
-        Driver = new BrowserService().Driver;
+        _driver = new BrowserService().Driver;
     }
 
     [TearDown]
     public void TearDown()
     {
-        Driver.Quit();
+        _driver.Quit();
     }
 }

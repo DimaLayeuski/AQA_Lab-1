@@ -7,11 +7,10 @@ namespace Task16.Pages;
 public class TvPage : BasePage
 {
     private const string END_POINT = "/tv";
-
     private static readonly By FirstTvCheckBy = By.XPath("((//div[@class='schema-product__group'])[1]//label)[1]");
     private static readonly By SecondTvCheckBy = By.XPath("((//div[@class='schema-product__group'])[2]//label)[1]");
     private static readonly By CompareButtonBy = By.ClassName("compare-button__sub_main");
-    private static readonly By VkBy = By.ClassName("footer-style__social-button_vk");
+    private static readonly By VkComBy = By.ClassName("footer-style__social-button_vk");
     private static readonly By FacebookBy = By.ClassName("footer-style__social-button_fb");
     private static readonly By TwitterBy = By.ClassName("footer-style__social-button_tw");
 
@@ -21,7 +20,7 @@ public class TvPage : BasePage
 
     protected override void OpenPage()
     {
-        Driver.Navigate().GoToUrl(Configurator.OnlinerUrl + END_POINT);
+        Driver.Navigate().GoToUrl(Configurator.BaseUrl + END_POINT);
     }
 
     protected override bool IsPageOpened()
@@ -39,7 +38,7 @@ public class TvPage : BasePage
     public IWebElement FirstTvCheck => WaitService.WaitElementIsExist(FirstTvCheckBy);
     public IWebElement SecondTvCheck => WaitService.WaitElementIsExist(SecondTvCheckBy);
     public IWebElement CompareButton => WaitService.WaitElementIsVisible(CompareButtonBy);
-    public IWebElement Vk => WaitService.WaitElementIsVisible(VkBy);
-    public IWebElement Facebook => WaitService.WaitElementToBeClickable(FacebookBy);
-    public IWebElement Twitter => WaitService.WaitElementToBeClickable(TwitterBy);
+    public IWebElement VkCom => WaitService.WaitElementIsVisible(VkComBy);
+    public IWebElement Facebook => WaitService.WaitElementIsVisible(FacebookBy);
+    public IWebElement Twitter => WaitService.WaitElementIsVisible(TwitterBy);
 }

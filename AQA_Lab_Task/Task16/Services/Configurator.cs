@@ -9,13 +9,12 @@ public class Configurator
 {
     private static readonly Lazy<IConfiguration> s_configuration;
     public static IConfiguration Configuration => s_configuration.Value;
-    public static string OnlinerUrl => Configuration[nameof(OnlinerUrl)];
+    public static string BaseUrl => Configuration[nameof(BaseUrl)];
     public static string VkComUrl => Configuration[nameof(VkComUrl)];
     public static string FacebookUrl => Configuration[nameof(FacebookUrl)];
     public static string TwitterUrl => Configuration[nameof(TwitterUrl)];
     public static string BrowserType => Configuration[nameof(BrowserType)];
     public static int WaitTimeout => int.Parse(Configuration[nameof(WaitTimeout)]);
-    public static string HerokuAppUrl => Configuration[nameof(HerokuAppUrl)];
 
     static Configurator()
     {

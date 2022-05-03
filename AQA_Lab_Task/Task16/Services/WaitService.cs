@@ -1,5 +1,4 @@
 using System;
-using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -13,9 +12,9 @@ public class WaitService
 
     public WaitService(IWebDriver driver)
     {
-        _driver = driver;
+        _driver = driver; 
         _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(Configurator.WaitTimeout));
-
+        
         _fluentWait = new DefaultWait<IWebDriver>(_driver)
         {
             Timeout = TimeSpan.FromSeconds(Configurator.WaitTimeout),
@@ -26,26 +25,26 @@ public class WaitService
 
     public IWebElement WaitElementIsVisible(By locator)
     {
-        return _fluentWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator));
+       return _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator));
     }
-
-    public bool WaitUntilElementInvisible(By locator)
-    {
-        return _fluentWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(locator));
-    }
-
+    
     public IWebElement WaitElementIsExist(By locator)
     {
         return _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator));
     }
 
-    public ReadOnlyCollection<IWebElement> WaitUntilElementsPresent(By locator)
+    public IWebElement WaitQuickElement(By locator)
     {
-        return _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.PresenceOfAllElementsLocatedBy(locator));
+        return _fluentWait.Until(x => x.FindElement(locator));
     }
-
+    
     public IWebElement WaitElementToBeClickable(By locator)
     {
         return _fluentWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(locator));
+    }
+    
+    public bool WaitUrlMatches(string finishUrl)
+    {
+        return _fluentWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlMatches(finishUrl));
     }
 }
