@@ -1,4 +1,3 @@
-using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -8,7 +7,7 @@ namespace SeleniumTestProject1;
 
 public class Test2
 {
-    private IWebDriver? _driver;
+    private IWebDriver _driver;
 
     [SetUp]
     public void Setup()
@@ -17,7 +16,7 @@ public class Test2
     }
 
     [Test]
-    public void SmokeTest1()
+    public void SmokeTest2()
     {
         string selectAll = Keys.Control + "A";
         _driver.Navigate().GoToUrl("https://masterskayapola.ru/kalkulyator/laminata.html");
@@ -53,22 +52,20 @@ public class Test2
         priceElement.SendKeys("1000");
         SelectElement layingDirectionDropDown = new SelectElement(layingDirectionElement);
         layingDirectionDropDown.SelectByIndex(1);
-        biasElement.SendKeys(selectAll);
+        biasElement.Clear();
         biasElement.SendKeys("400");
         walldistElement.SendKeys(selectAll);
         walldistElement.SendKeys("15");
-        Thread.Sleep(1000);
         calculateElement.Click();
         
-        Assert.Pass();
         Assert.Multiple(() =>
         {
-            Assert.AreEqual("7.82", sLamElement.GetAttribute("value"));
-            Assert.AreEqual("45", lCountElement.GetAttribute("value"));
-            Assert.AreEqual("5", lPacksElement.GetAttribute("value"));
-            Assert.AreEqual("9000", lPriceElement.GetAttribute("value"));
-            Assert.AreEqual("5", lOverElement.GetAttribute("value"));
-            Assert.AreEqual("9", lTrashElement.GetAttribute("value"));
+            Assert.AreEqual("7.82 м2.", sLamElement.Text);
+            Assert.AreEqual("45 шт.", lCountElement.Text);
+            Assert.AreEqual("5 шт.", lPacksElement.Text);
+            Assert.AreEqual("9000 руб.", lPriceElement.Text);
+            Assert.AreEqual("5 шт.", lOverElement.Text);
+            Assert.AreEqual("9 шт.", lTrashElement.Text);
         });
     }
 

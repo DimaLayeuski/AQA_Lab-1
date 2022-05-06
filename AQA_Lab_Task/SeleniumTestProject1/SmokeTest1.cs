@@ -7,7 +7,7 @@ namespace SeleniumTestProject1;
 
 public class Test1
 {
-    private IWebDriver? _driver;
+    private IWebDriver _driver;
 
     [SetUp]
     public void Setup()
