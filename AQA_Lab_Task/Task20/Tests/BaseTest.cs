@@ -1,22 +1,22 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Task20.Services;
+using PageObject.Services;
 
-namespace Task20.Tests;
+namespace PageObject;
 
 public class BaseTest
 {
-    protected IWebDriver Driver;
+    protected IWebDriver _driver;
 
     [SetUp]
     public void Setup()
     {
-        Driver = new BrowserService().Driver;
+        _driver = new BrowserService().Driver;
     }
 
     [TearDown]
     public void TearDown()
     {
-        Driver.Quit();
+        _driver.Quit();
     }
 }

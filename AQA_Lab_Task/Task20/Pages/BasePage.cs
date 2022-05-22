@@ -1,9 +1,10 @@
 using System;
+using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Task20.Services;
+using PageObject.Services;
 
-namespace Task20.Pages;
+namespace PageObject.Pages;
 
 public abstract class BasePage
 {
@@ -33,7 +34,7 @@ public abstract class BasePage
         var Count = 0;
         var isPageOpenedIndicator = IsPageOpened();
 
-        while (!isPageOpenedIndicator && Count < WAIT_FOR_PAGE_LOADING_TIME / Configurator.WaitTimeout)
+        while (!isPageOpenedIndicator && Count < WAIT_FOR_PAGE_LOADING_TIME/Configurator.WaitTimeout)
         {
             Count++;
             isPageOpenedIndicator = IsPageOpened();

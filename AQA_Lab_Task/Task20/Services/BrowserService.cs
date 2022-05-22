@@ -1,7 +1,7 @@
 using System;
 using OpenQA.Selenium;
 
-namespace Task20.Services;
+namespace PageObject.Services;
 
 public class BrowserService
 {

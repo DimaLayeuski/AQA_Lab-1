@@ -4,7 +4,7 @@ using OpenQA.Selenium.Firefox;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace Task20.Services
+namespace PageObject.Services
 {
     public class DriverFactory
     {
